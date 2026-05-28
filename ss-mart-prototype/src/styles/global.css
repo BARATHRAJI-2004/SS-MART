@@ -1,0 +1,451 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #0c831f;
+  --primary-light: #e6f3eb;
+  --primary-dark: #085e15;
+  --secondary: #f8cb46;
+  --secondary-light: #fef6dd;
+  --accent: #ff6b35;
+  --background: #f4f6f9;
+  --card-bg: #ffffff;
+  --text-dark: #1f2937;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --success: #10b981;
+  --danger: #ef4444;
+
+  --radius: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==================== CARDS ==================== */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--primary-light);
+}
+
+/* ==================== BUTTONS ==================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.875rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+}
+
+.btn:active::after {
+  width: 200px;
+  height: 200px;
+}
+
+.btn-add {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-add:hover {
+  background-color: var(--primary);
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(12, 131, 31, 0.3);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(12, 131, 31, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
+}
+.btn-outline:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: white;
+  border: none;
+}
+.btn-accent:hover {
+  background: #e55a2b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.35);
+}
+
+/* ==================== ANIMATIONS ==================== */
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.slide-in-left {
+  opacity: 0;
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.slide-in-right {
+  opacity: 0;
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+.scale-in {
+  opacity: 0;
+  animation: scaleIn 0.4s ease-out forwards;
+}
+
+.bounce-in {
+  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* Stagger children */
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 60ms; }
+.stagger > *:nth-child(3) { animation-delay: 120ms; }
+.stagger > *:nth-child(4) { animation-delay: 180ms; }
+.stagger > *:nth-child(5) { animation-delay: 240ms; }
+.stagger > *:nth-child(6) { animation-delay: 300ms; }
+.stagger > *:nth-child(7) { animation-delay: 360ms; }
+.stagger > *:nth-child(8) { animation-delay: 420ms; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.3); }
+  50% { opacity: 1; transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== HOVER EFFECTS ==================== */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+
+.hover-scale {
+  transition: transform 0.25s ease;
+}
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(12, 131, 31, 0.15);
+}
+
+.hover-border {
+  transition: border-color 0.3s ease;
+}
+.hover-border:hover {
+  border-color: var(--primary);
+}
+
+/* Image zoom on hover */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.4s ease;
+}
+.img-zoom:hover img {
+  transform: scale(1.1);
+}
+
+/* ==================== BADGES ==================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.badge-discount {
+  background: #fef2f2;
+  color: var(--danger);
+}
+
+.badge-delivery {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.badge-new {
+  background: var(--secondary-light);
+  color: #92400e;
+}
+
+/* ==================== MOBILE ==================== */
+.phone-frame {
+  width: 375px;
+  height: 812px;
+  border: 12px solid #1a1a1a;
+  border-radius: 44px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 2px #333;
+  background: var(--background);
+}
+
+.mobile-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 25px;
+  background: #1a1a1a;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  z-index: 100;
+}
+
+/* ==================== SCROLLBAR ==================== */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ==================== NAVIGATION LINKS ==================== */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: all 0.25s ease;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.nav-link.active {
+  background: var(--primary);
+  color: white;
+}
+
+/* ==================== CATEGORY CHIP ==================== */
+.category-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+.category-chip:hover {
+  transform: translateY(-4px);
+}
+.category-chip:hover .category-img {
+  border: 2px solid var(--primary);
+  box-shadow: 0 4px 12px rgba(12, 131, 31, 0.15);
+}
+
+.category-img {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+/* ==================== PAGE TRANSITION ==================== */
+.page-enter {
+  animation: pageSlideIn 0.4s ease-out forwards;
+}
+
+@keyframes pageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== OFFER BANNER ==================== */
+.offer-banner {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.offer-banner:hover {
+  transform: scale(1.02);
+}
+.offer-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255,255,255,0.1) 50%,
+    transparent 70%
+  );
+  animation: shimmer 3s infinite;
+}
+
+/* ==================== QUANTITY COUNTER ==================== */
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--primary);
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.qty-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* Admin Styles */
+.admin-bg { background: #0f172a; }
+.admin-card {
+  background: #1e293b;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+}
+.admin-card:hover {
+  border-color: rgba(255,255,255,0.15);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
